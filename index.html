@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RideGlobal - خدمات النقل والتوصيل</title>
+    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background-color: #1a1a2e; color: white; padding: 30px; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; }
+        .container { background: #16213e; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 450px; border: 1px solid #0f3460; }
+        h1 { color: #e94560; margin-bottom: 10px; font-size: 2.2rem; }
+        p { color: #848da1; font-size: 1.1rem; line-height: 1.6; }
+        .btn { background-color: #e94560; color: white; border: none; padding: 15px 35px; border-radius: 50px; cursor: pointer; font-size: 1.1rem; margin-top: 25px; transition: 0.3s; width: 100%; font-weight: bold; }
+        .btn:hover { background-color: #c62842; transform: scale(1.02); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RidGlobal 🚕📦</h1>
+        <p>مرحباً بك في المنصة العالمية الرائدة لنقل الركاب وخدمات التوصيل المتكاملة عبر شبكة باي.</p>
+        <button class="btn" onclick="login()">ابدأ الاستخدام الآن</button>
+        <div id="status" style="margin-top: 20px; color: #00d2ff;"></div>
+    </div>
+    <script>
+        const Pi = window.Pi;
+        Pi.init({ version: "2.0", sandbox: true });
+        async function login() {
+            try {
+                const user = await Pi.authenticate(['username', 'payments']);
+                document.getElementById('status').innerText = "أهلاً بك يا " + user.user.username;
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    </script>
+</body>
+</html>
