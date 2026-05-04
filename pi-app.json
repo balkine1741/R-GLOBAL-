@@ -1,0 +1,6 @@
+pi-app.json{
+  "app_id": "ride-global",
+  "name": "RideGlobal",
+  "description": "A decentralized global platform for ride-sharing and delivery services.",
+  "main_view": "index.html"
+}
